@@ -37,6 +37,20 @@ class Time:
             return False
         return True
 
+    def __str__(self):
+        """Return string representation for print()."""
+        return f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
+
+    def __repr__(self):
+        """Return representation for interactive shell."""
+        return f'{self.hour:02d}.{self.minute:02d}.{self.second:02d}'
+
+    def __add__(self, t2):
+        """Overload '+' operator for Time objects."""
+        total_seconds = self.time_to_sec() + t2.time_to_sec()
+        result_time = sec_to_time(total_seconds)
+        return result_time
+
 def sec_to_time(seconds):
     """Convert seconds to a Time object."""
     time = Time()
